@@ -33,14 +33,19 @@ public class Snake {
                     game.setCellValueEx(go.x, go.y, Color.NONE, BODY_SIGN, Color.GREEN, 75);
                 }
             }
-        } else {
+        }
+        else {
             for (GameObject go : this.snakeParts) {
                 if (0 == snakeParts.indexOf(go)) {
                     game.setCellValueEx(go.x, go.y, Color.NONE, HEAD_SIGN, Color.RED, 75);
-                } else if (0 < snakeParts.indexOf(go)) {
+                }
+                else if (0 < snakeParts.indexOf(go)) {
                     game.setCellValueEx(go.x, go.y, Color.NONE, BODY_SIGN, Color.RED, 75);
                 }
             }
         }
+    }
+    public void move() {
+        return;
     }
 }
