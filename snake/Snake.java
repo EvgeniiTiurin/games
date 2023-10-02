@@ -4,6 +4,9 @@ import com.javarush.engine.cell.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.javarush.games.snake.SnakeGame.WIDTH;
+import static com.javarush.games.snake.SnakeGame.HEIGHT;
+
 public class Snake {
     private List<GameObject> snakeParts = new ArrayList<>();
     private static final String HEAD_SIGN = "\uD83D\uDC7E";
@@ -45,6 +48,15 @@ public class Snake {
         }
     }
     public void move() {
+        GameObject go = createNewHead();
+        if (go.x < 0 || go.y < 0 || go.x >= WIDTH|| go.y >= HEIGHT)
+        {
+            isAlive = false;
+        }
+        else {
+            snakeParts.add(0, go);
+            removeTail();
+        }
         return;
     }
     public GameObject createNewHead() {
