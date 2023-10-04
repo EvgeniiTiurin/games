@@ -57,6 +57,8 @@ public class SnakeGame extends Game {
             case RIGHT:
                 snake.setDirection(Direction.RIGHT);
                 break;
+            default:
+                break;
         }
     }
     private void createNewApple() {
