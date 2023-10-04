@@ -93,7 +93,7 @@ public class SnakeGame extends Game {
         isGameStopped = true;
         showMessageDialog(Color.YELLOW, "Game Over", Color.BLACK, 75);
     }
-    private void win(){
+    private void win() {
         stopTurnTimer();
         isGameStopped = true;
         showMessageDialog(Color.GREEN, "You win", Color.AZURE, 75);
