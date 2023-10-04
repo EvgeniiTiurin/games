@@ -54,15 +54,21 @@ public class Snake {
             }
         }
     }
-    public void move() {
+    public void move(Apple apple) {
         GameObject go = createNewHead();
         if (go.x < 0 || go.y < 0 || go.x >= WIDTH|| go.y >= HEIGHT)
         {
             isAlive = false;
         }
         else {
-            snakeParts.add(0, go);
-            removeTail();
+            if (go.x == apple.x && go.y == apple.y) {
+                snakeParts.add(0, go);
+                apple.isAlive = false;
+            }
+            else {
+                snakeParts.add(0, go);
+                removeTail();
+            }
         }
         return;
     }
