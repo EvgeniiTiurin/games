@@ -2,6 +2,8 @@ package com.javarush.games.game2048;
 
 import com.javarush.engine.cell.*;
 
+import javax.imageio.ImageTranscoder;
+
 public class Game2048 extends Game {
     private static final int SIDE = 4;
     private int[][]gameField = new int[SIDE][SIDE];
@@ -14,13 +16,13 @@ public class Game2048 extends Game {
     private void createGame(){
         createNewNumber();
         createNewNumber();
-        showMatrix();
+        matrix();
     }
 
     private void drawScene() {
         for (int x = 0; x < SIDE; x++){
             for (int y = 0; y < SIDE; y++){
-            //setCellColor(x, y, Color.RED);
+            setCellColoredNumber(x, y, gameField[y][x]);
             }
         }
     }
@@ -42,11 +44,52 @@ public class Game2048 extends Game {
         }
     }
 
-    private void showMatrix() {
+    private void setCellColoredNumber(int x, int y, int value) {
+        if (value != 0) {
+            setCellValueEx(x, y, getColorByValue(value), Integer.toString(value));
+        }
+        else {
+            setCellValueEx(x, y, Color.NONE , "");
+        }
+    }
+
+    private Color getColorByValue (int value) {
+        switch (value) {
+            case 2:
+                return Color.PINK;
+            case 4:
+                return Color.VIOLET;
+            case 8:
+                return Color.BLUE;
+            case 16:
+                return Color.BLUEVIOLET;
+            case 32:
+                return Color.GREENYELLOW;
+            case 64:
+                return Color.GREEN;
+            case 128:
+                return Color.ORANGE;
+            case 256:
+                return Color.LIGHTPINK;
+            case 512:
+                return Color.ORANGERED;
+            case 1024:
+                return Color.DEEPPINK;
+            case 2048:
+                return Color.AZURE;
+            default:
+                return Color.NONE;
+        }
+    }
+
+    public void matrix() {
+        System.out.println("Matrix:");
         for (int x = 0; x < SIDE; x++){
+            System.out.print("{ ");
             for (int y = 0; y < SIDE; y++){
-                System.out.print(gameField[y][x] + " ");
+                System.out.print(gameField[x][y] + " ");
             }
+            System.out.println("}");
         }
     }
 }
