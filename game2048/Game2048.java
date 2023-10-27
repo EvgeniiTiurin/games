@@ -3,6 +3,8 @@ package com.javarush.games.game2048;
 import com.javarush.engine.cell.*;
 
 import javax.imageio.ImageTranscoder;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Game2048 extends Game {
     private static final int SIDE = 4;
@@ -91,5 +93,23 @@ public class Game2048 extends Game {
             }
             System.out.println("}");
         }
+    }
+
+    private boolean compressRow(int[] row) {
+        int length = SIDE;
+        int writeIndex = 0;
+        boolean moved = false;
+
+        for (int i = 0; i < length; i++) {
+            if (row[i] != 0) {
+                row[writeIndex] = row[i];
+                if (i != writeIndex) {
+                    row[i] = 0;
+                    moved = true;
+                }
+                writeIndex++;
+            }
+        }
+        return moved;
     }
 }
