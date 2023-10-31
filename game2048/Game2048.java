@@ -18,7 +18,22 @@ public class Game2048 extends Game {
     private void createGame(){
         createNewNumber();
         createNewNumber();
-        matrix();
+//        matrix();
+//        int[] row0 = {4, 4, 0, 0};
+//        mergeRow(row0);
+//        int[] row1 = {2, 2, 2, 2};
+//        mergeRow(row1);
+//        int[] row2 = {4, 2, 2, 0};
+//        mergeRow(row2);
+//        int[] row3 = {0, 2, 2, 0};
+//        mergeRow(row3);
+//        int[] row4 = {0, 2, 2, 2};
+//        mergeRow(row4);
+//        int[] row5 = {4, 0, 4, 0};
+//        mergeRow(row5);
+
+        //compressRow(row);
+        //mergeRow(row);
     }
 
     private void drawScene() {
@@ -111,5 +126,23 @@ public class Game2048 extends Game {
             }
         }
         return moved;
+    }
+
+    private boolean mergeRow(int[] row) {
+        boolean merged = false;
+        int length = SIDE;
+
+        //System.out.println("Original: " + Arrays.toString(row) + " " + merged);
+
+        for (int i = 0; i < length - 1; i++) {
+            if ((row[i] == row[i+1]) && (row[i] != 0)) {
+                row[i] = row[i] * 2;
+                row[i + 1] = 0;
+                merged = true;
+            }
+        }
+//        System.out.println("Merged: " + Arrays.toString(row) + " " + merged);
+//        System.out.println("----------------");
+        return merged;
     }
 }
