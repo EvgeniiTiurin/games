@@ -145,4 +145,39 @@ public class Game2048 extends Game {
 //        System.out.println("----------------");
         return merged;
     }
+
+    public void onKeyPress(Key key) {
+        switch (key) {
+            case LEFT:
+                moveLeft();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+            case UP:
+                moveUp();
+                break;
+            case DOWN:
+                moveDown();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void moveLeft() {
+
+    }
+
+    private void moveRight() {
+
+    }
+
+    private void moveUp() {
+
+    }
+
+    private void moveDown() {
+
+    }
 }
